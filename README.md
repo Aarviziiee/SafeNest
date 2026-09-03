@@ -1,2 +1,0 @@
-# SafeNest
-JAVA OOP FINAL PROJECT

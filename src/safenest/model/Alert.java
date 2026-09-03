@@ -40,6 +40,7 @@ public class Alert {
         return alertLocation;
     }
 
+    // Method to display Alert details
     @Override
     public String toString() {
         return  " Alert ID: " + alertId +

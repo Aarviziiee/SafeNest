@@ -9,10 +9,12 @@ import java.util.InputMismatchException;
 public class SenderMenu extends UserMenu implements MenuConstraints{
 
 
+    // constructor
     public SenderMenu(AlertManagement alertManager) {
         super(alertManager);
     }
 
+    // method: display a menu to the sender
     public void displayActions(){
 
         System.out.println("Please select your choice: ");
@@ -20,6 +22,8 @@ public class SenderMenu extends UserMenu implements MenuConstraints{
         System.out.println("2. Exit");
 
     }
+
+    // method: take input and handle exceptions to prevent breaking the program flow
     public void addAlert() throws InvalidAlertException  {
 
            System.out.println("Enter Alert Description: ");
@@ -27,11 +31,17 @@ public class SenderMenu extends UserMenu implements MenuConstraints{
            if(description.isBlank()){
                throw new InvalidAlertException("Description cannot be blank. Please enter valid input!");
            }
+           if (description.length() < 10){
+               throw new  InvalidAlertException("Description needs to be at lest 10 characters long. Try Again.");
+           }
 
            System.out.println("Enter your current Location: ");
            String location = scanner.nextLine();
            if(location.isBlank()){
                throw new InvalidAlertException("Location cannot be blank. Please enter valid input!");
+           }
+           if (location.length() < 10){
+            throw new InvalidAlertException("Description needs to be at lest 10 characters long. Try Again.");
            }
 
        boolean alertAdded = alertManager.addAlert(description, location);
@@ -44,6 +54,7 @@ public class SenderMenu extends UserMenu implements MenuConstraints{
 
    }
 
+   // method: a menu so the user can return back to the main menu
    public void showMenu(){
 
         int senderChoice = 0;
@@ -52,6 +63,7 @@ public class SenderMenu extends UserMenu implements MenuConstraints{
             displayActions();
             try{
                 senderChoice = scanner.nextInt();
+                scanner.nextLine();
             } catch (InputMismatchException e){
 
                 System.out.println("Invalid Choice. Input needs to be a number from the menu.");

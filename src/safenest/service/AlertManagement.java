@@ -4,13 +4,17 @@ import safenest.model.Alert;
 
 public class AlertManagement {
 
+    // array to hold alert object
     private Alert[] alert;
     private int alertCount = 0;
 
+    //constructor
     public AlertManagement(int size) {
         alert = new Alert[size];
     }
 
+
+    // method: to add alert
     public boolean addAlert(String description, String location) {
 
         if (alertCount < alert.length) {
@@ -21,11 +25,15 @@ public class AlertManagement {
         return false;
     }
 
+
+    // method: to display each alert in the array
     public Alert[] displayAllAlerts() {
 
         return alert;
     }
 
+
+    // method: to filter alerts by location and return a list of them from the array
     public void filterByLocation(String location) {
 
         StringBuilder locationList = new StringBuilder();
@@ -41,6 +49,8 @@ public class AlertManagement {
             System.out.println(locationList);
     }
 
+    // method overloading
+    // private method: to update status of an alert in the array by fetching the entered id through recursion
     private boolean updateStatus(int id,String status, int i){
 
         if( i >= alertCount ){
@@ -56,12 +66,15 @@ public class AlertManagement {
         return false;
     }
 
+
+    // method: to simply take the id from user and assign a status to the alert
     public boolean updateStatus(int id, String status) {
 
         boolean update = updateStatus(id,status,0);
         return update;
     }
 
+    // method: to find alerts with a particular status
     public void filterByStatus(String status){
 
         for(int i = 0; i < alertCount - 1; i++){

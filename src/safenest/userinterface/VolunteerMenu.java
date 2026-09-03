@@ -8,10 +8,13 @@ import java.util.InputMismatchException;
 public class VolunteerMenu extends UserMenu implements MenuConstraints{
 
 
+    // constructor
     public VolunteerMenu(AlertManagement alertManager) {
         super(alertManager);
     }
 
+
+    // to display volunteer a  menu of tasks under their authority
     public void displayActions(){
 
         System.out.println("Enter your choice: ");
@@ -22,6 +25,8 @@ public class VolunteerMenu extends UserMenu implements MenuConstraints{
         System.out.println("5. Exit");
 
     }
+
+    // method: to display all alerts if any were received else return a message
     public void displayAllAlerts(){
 
         System.out.println("All Alerts:");
@@ -39,6 +44,8 @@ public class VolunteerMenu extends UserMenu implements MenuConstraints{
         }
     }
 
+
+    // method: to filter alerts through location
     public void filterByLocation(){
 
         System.out.println("Enter Location: ");
@@ -49,6 +56,7 @@ public class VolunteerMenu extends UserMenu implements MenuConstraints{
 
     }
 
+    // method: take updated status input and update the status
     public void updateStatus(){
 
         System.out.println("Enter Alert ID: ");
@@ -101,6 +109,7 @@ public class VolunteerMenu extends UserMenu implements MenuConstraints{
     }
 
 
+    // method: to filter alerts through status n return a list of them
     public void filterAlertByStatus(){
 
         System.out.println("Enter the status you want to filter through: ");
@@ -139,7 +148,7 @@ public class VolunteerMenu extends UserMenu implements MenuConstraints{
         alertManager.filterByStatus(status);
     }
 
-
+// method: to handle invalid exception to prevent breaking program flow and call methods according to users input
     public void showMenu(){
 
         int volunteerChoice = 0;
